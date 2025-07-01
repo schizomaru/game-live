@@ -1,0 +1,16 @@
+:root {
+
+	--color-high: #bf94ff;
+	--color-hover: #5c16c5;
+	--color-back: #0e0e10;
+	--color-fore: #fff;
+	--color-fall: #adadb8;
+
+	--theme-chroma: 80;
+
+}
+
+img {
+	background-color: #8888;
+	display:block;
+}
