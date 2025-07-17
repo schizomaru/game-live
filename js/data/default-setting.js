@@ -12,7 +12,7 @@ if(settingWeight.size === 0){
 	settingWeight.set('view/weight/high', 0)
 	settingWeight.set('view/weight/low', 20);
 
-	settingWeight.set('enable/audio-notification', 1);
+	settingWeight.set('audio-notification-volume', 25);
 }
 
 if(langWeight.size === 0)

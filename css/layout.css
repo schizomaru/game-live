@@ -329,6 +329,7 @@ button {
 	height: 5rem;
 	padding: 1rem;
 	cursor: pointer;
+	gap: 1rem;
 
 	&:hover {
 		background-color: #8882;
@@ -337,6 +338,11 @@ button {
 	span {
 		display: flex;
 		align-items: center;
+		white-space: nowrap;
+	}
+
+	input {
+		max-width: 10ch;
 	}
 }
 

@@ -48,7 +48,8 @@ async function update(){
 }
 
 async function audioNotification(lives){
-	if(!StorageSetting.get('settings').has('enable/audio-notification')) return;
+	const volume = StorageSetting.get('settings').has('audio-notification-volume') || 0;
+	if(volume <= 0) return;
 
 	const gameMap = new Map();
 
@@ -70,7 +71,7 @@ async function audioNotification(lives){
 			: `${user_name} channel is playing ${game_name}`;
 	}).join('; ');
 
-	speak(message);
+	speak(message, volume);
 }
 
 async function loop(){
