@@ -4,6 +4,16 @@ const gameWeight = StorageSetting.get('game/weight');
 const langWeight = StorageSetting.get('lang/weight');
 const tagsWeight = StorageSetting.get('tags/weight');
 const wordWeight = StorageSetting.get('word/weight');
+const settingWeight = StorageSetting.get('settings');
+
+if(settingWeight.size === 0){
+	settingWeight.set('time/weight/high', 1)
+	settingWeight.set('time/weight/low', 120)
+	settingWeight.set('view/weight/high', 0)
+	settingWeight.set('view/weight/low', 20);
+
+	settingWeight.set('enable/audio-notification', 1);
+}
 
 if(langWeight.size === 0)
 	langWeight.set('pt', 50);

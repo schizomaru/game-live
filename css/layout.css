@@ -17,7 +17,7 @@ body {
 	aspect-ratio: 1;
 }
 
-input[type="text"], .input-text {
+input[type="text"], input[type="number"], .input-text {
 	border-radius: 0.5rem;
 	outline: 1px solid #8888;
 	background-color: #0000;
@@ -78,12 +78,6 @@ button {
 	}
 }
 
-.page {
-
-	&:not(.page-selected) {
-		display: none;
-	}
-}
 
 .block-list {
 	display: flex;
@@ -327,4 +321,48 @@ button {
 
 
 
+}
+
+.label-input {
+	display: flex;
+	justify-content: space-between;
+	height: 5rem;
+	padding: 1rem;
+	cursor: pointer;
+
+	&:hover {
+		background-color: #8882;
+	}
+
+	span {
+		display: flex;
+		align-items: center;
+	}
+}
+
+#settings {
+
+	& > * {
+		border-radius: 1rem;
+		overflow: hidden;
+		border: 1px solid #8886;
+		width: 320px;
+	}
+
+	h2 {
+		background-color: #8886;
+		padding: 0 1rem;
+		display: flex;
+		align-items: center;
+		height: 2em;
+	}
+
+}
+
+
+.page {
+
+	&:not(.page-selected) {
+		display: none;
+	}
 }

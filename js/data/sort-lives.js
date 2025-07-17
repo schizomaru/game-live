@@ -4,7 +4,7 @@ const gameWeight = StorageSetting.get('game/weight');
 const langWeight = StorageSetting.get('lang/weight');
 const tagsWeight = StorageSetting.get('tags/weight');
 const wordWeight = StorageSetting.get('word/weight');
-const scoreWeight = StorageSetting.get('score/weight');
+const settingWeight = StorageSetting.get('settings');
 
 function clamp(min, val, max){
 	return Math.max(min, Math.min(val, max));
@@ -52,12 +52,12 @@ function scoreView({live_viewer_count}, low_score_view, delta_score_view){
 
 function sortLives(liveList){
 
-	const high_score_time = scoreWeight.get('high-score-time') || 1;
-	const low_score_time = scoreWeight.get('low-score-time') || 120;
+	const high_score_time = settingWeight.get('time/weight/high') || 1;
+	const low_score_time = settingWeight.get('time/weight/low') || 120;
 	const delta_score_time = high_score_time - low_score_time;
 
-	const high_score_view = scoreWeight.get('high-score-view') || 0;
-	const low_score_view = scoreWeight.get('low-score-view') || 20;
+	const high_score_view = settingWeight.get('view/weight/high') || 0;
+	const low_score_view = settingWeight.get('view/weight/low') || 20;
 	const delta_score_view = high_score_view - low_score_view;
 
 	const words = [];

@@ -1,5 +1,7 @@
 import morphdom from '../vendor/morphdom.js';
 
+const templateMap = {};
+
 class DOMUtil {
 
 	static createElement(html){
@@ -8,20 +10,35 @@ class DOMUtil {
 		return doc.firstChild;
 	}
 
+	static getTemplate(templateName){
+		return templateMap[templateName] || (templateMap[templateName] = document.querySelector(`template[data-name="${templateName}"]`).innerHTML);
+	}
+
+	static generateNode(template, data, $parent){
+		const html = DOMUtil.generateHTML(template, data);
+		const $child = DOMUtil.createElement(html);
+		$parent && $parent.appendChild($child);
+		return $child;
+	}
+
+	static updateNode($node, template, data){
+		const html = DOMUtil.generateHTML(template, data);
+		morphdom($node, html);
+		return $node;
+	}
+
 	static updateChidlrenByTemplate($parent, dataList, templateName){
 		const children = [...$parent.children];
 		const len = Math.max(children.length, dataList.length);
-		const template = document.querySelector(`template[data-name="${templateName}"]`).innerHTML;
 
 		for(let i=0; i < len; i++){
 			const data = dataList[i];
 			const child = children[i];
 			if(data) {
-				const html = DOMUtil.generateHTML(template, data);
 				if(child) {
-					morphdom(child, html);	
+					DOMUtil.updateNode(child, templateName, data);
 				} else {
-					$parent.appendChild(DOMUtil.createElement(html));
+					DOMUtil.generateNode(templateName, data, $parent);
 				}
 			} else if(child) {
 				child.remove();
@@ -30,7 +47,8 @@ class DOMUtil {
 	}
 
 	static generateHTML(template, data){
-		return template
+		return DOMUtil
+		.getTemplate(template)
 		.trim()
 		.replaceAll(/[\t\n]+/g, '')
 		.replaceAll(/\s+/g, ' ')

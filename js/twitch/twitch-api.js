@@ -50,4 +50,32 @@ class TwitchApiPaginator {
 
 }
 
+async function* paginate(href, params){
+	const token = AccessToken.get();
+	if(!token) return yield false;
+	while(params){
+		try {
+			const response = await fetch(`${href}${params}`, {
+				headers: {
+					'Client-ID': client_id,
+					'Authorization': `Bearer ${token}`
+				}
+			});
+			const result = await response.json();
+			const data = result.data;
+			if(!data) return yield false;
+			if(!data.length) return yield false;
+			yield data;
+			const cursor = result?.pagination?.cursor || null;
+			if(!cursor) return yield false;
+			params = new URLSearchParams();
+			params.append('after', cursor);
+		} catch(twitchApiError){
+			console.error({twitchApiError});
+			return yield false;
+		}
+	}
+	return yield false;
+}
+
 export default TwitchApiPaginator;

@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Twitch Games/Categories</title>
 	<link type="text/css" rel="stylesheet" href="css/bundle.css" />
-	<script type="module" src="js/index.js"></script>
+	<script type="module" src="/js/index.js"></script>
 </head>
 <body>
 	<nav id="pages">
@@ -26,7 +26,37 @@
 	</div>
 	<ul class="page block-list" id="words">Soon</ul>
 	<ul class="page block-list" id="tags">Soon</ul>
-	<ul class="page block-list" id="settings">Soon</ul>
+	<div class="page block-list disabled" id="settings">
+		<div id="checklist-setting" class="checklist">
+			<h2>Check List</h2>
+			<label class="label-input">
+				<span>Audio Notification</span>
+				<input type="checkbox" data-setting="enable/audio-notification">
+			</label>
+		</div>
+		<div id="time-score-setting" class="number-pairs">
+			<h2>Live Time Score</h2>
+			<label class="label-input">
+				<span>Low Score (minutes): </span>
+				<input type="number" data-setting="time/weight/low" min="1" max="9999">
+			</label>
+			<label class="label-input">
+				<span>High Score (minutes): </span>
+				<input type="number" data-setting="time/weight/high" min="1" max="9999">
+			</label>
+		</div>
+		<div id="view-score-setting" class="number-pairs">
+			<h2>Live Viewer Count Score</h2>
+			<label class="label-input">
+				<span>Low Score: </span>
+				<input type="number" data-setting="view/weight/low" min="0" max="9999">
+			</label>
+			<label class="label-input">
+				<span>High Score: </span>
+				<input type="number" data-setting="view/weight/high" min="0" max="9999">
+			</label>
+		</div>
+	</div>
 	<template data-name="live-item">
 		<li class="live-item {{from}}" data-id="{{live_pid}}">
 			<a href="{{user_href}}" target="_blank">
