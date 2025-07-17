@@ -48,7 +48,7 @@ async function update(){
 }
 
 async function audioNotification(lives){
-	const volume = StorageSetting.get('settings').has('audio-notification-volume') || 0;
+	const volume = StorageSetting.get('settings').get('audio-notification-volume') || 0;
 	if(volume <= 0) return;
 
 	const gameMap = new Map();
