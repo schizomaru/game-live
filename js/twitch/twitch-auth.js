@@ -14,7 +14,7 @@ class AccessToken {
 		const oauhtURL = new URL('https://id.twitch.tv/oauth2/authorize');
 		const {searchParams} = oauhtURL;
 		searchParams.set('client_id', client_id);
-		searchParams.set('redirect_uri', location.href);
+		searchParams.set('redirect_uri', `${location.protocol}//${location.host}${location.pathname}`);
 		searchParams.set('response_type', 'token');
 		location.href = oauhtURL.href;
 	}
