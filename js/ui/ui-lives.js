@@ -45,7 +45,7 @@ async function update(){
 	}
 
 	for(let [live_pid, $node] of prevLiveNodeMap){
-		if(!prevLiveNodeMap.has(live_pid)){
+		if(!nextLiveNodeMap.has(live_pid)){
 			$node.remove();
 		}
 	}
