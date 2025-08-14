@@ -6,7 +6,7 @@ import StorageCache from "../storage/storage-cache.js";
 import {speak} from "../lib/speak.js";
 
 const $liveList = document.querySelector('#lives');
-const LOOP_MINUTES = 5;
+const LOOP_MINUTES = 1;
 const CACHE_MINUTES = LOOP_MINUTES * 3;
 
 let prevLiveNodeMap = new Map();
