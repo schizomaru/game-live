@@ -26,7 +26,7 @@ function translateGame({id, name, box_art_url}){
 		from: 'twitch',
 		game_id: id,
 		game_name: name,
-		game_src: resize(box_art_url, GAME_SRC_RATIO, 'height', 200),
+		game_src: resize(box_art_url, GAME_SRC_RATIO, 'height', 200) + `?ts=${Date.now()}`,
 		game_href: `https://www.twitch.tv/directory/category/${slugify(name)}`
 	};
 }
