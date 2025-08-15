@@ -26,7 +26,7 @@ function translateGame({id, name, box_art_url}){
 		from: 'twitch',
 		game_id: id,
 		game_name: name,
-		game_src: resize(box_art_url, GAME_SRC_RATIO, 'height', 200) + `?ts=${Date.now()}`,
+		game_src: resize(box_art_url, GAME_SRC_RATIO, 'height', 200),
 		game_href: `https://www.twitch.tv/directory/category/${slugify(name)}`
 	};
 }
@@ -56,7 +56,7 @@ function translateLive({id, title, tags, viewer_count, started_at, language, thu
 		live_min: minutes,
 		live_minutes: minutes.toFixed(0),
 		live_lang: language,
-		live_src: resize(thumbnail_url, LIVE_SRC_RATIO, 'width', 480),
+		live_src: resize(thumbnail_url, LIVE_SRC_RATIO, 'width', 480) + `?ts=${Date.now()}`,
 		live_is_mature: is_mature
 	}
 }
