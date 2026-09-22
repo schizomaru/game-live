@@ -18,7 +18,7 @@ function scoreLang({live_lang}){
 function scoreTags({live_tags}){
 	let count = 1;
 	let sum = count * 100;
-	for(let tag of live_tags){
+	for(let tag of live_tags || []){
 		const weight = tagsWeight.get(tag);
 		if(weight){
 			sum += (weight * 2);
